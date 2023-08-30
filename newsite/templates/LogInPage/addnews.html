@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add News</title>
+    {% load static %}
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+    {% load crispy_forms_tags %}
+    {{ form.media }}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+<form method="POST" class="post-form" action="/addnews">
+        {% csrf_token %}
+    <div class="container">
+        {{ form.errors }}
+        {{ message }}
+<br>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <h3>Add News</h3>
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">News Title</label>
+    <div class="col-sm-4">
+      {{ form.newstitle }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 form-label select-label">Select News Category</label>
+    <div class="col-sm-4">
+       {{ form.category }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">City</label>
+    <div class="col-sm-4">
+       {{ form.city }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">News</label>
+    <div class="col-sm-4">
+      {{ form.news }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Publish type</label>
+    <div class="col-sm-4">
+      {{ form.publish_type}}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Publish date</label>
+    <div class="col-sm-4">
+      {% csrf_token %}
+<!--      {{ form|crispy }}-->
+      {{ form.publish_date }}
+    </div>
+  </div>
+
+
+    </div>
+        <div class="text-center">
+        <button type="submit" class="btn btn-primary">Add News</button>
+        </div>
+        </div>
+</form>
+
+</body>
+</html>

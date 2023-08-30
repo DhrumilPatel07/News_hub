@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+{% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+<div class="buttons">
+    <div class="col-sm-4">
+        <a type="submit" class="btn btn-primary" href="/mynews">My News</a>
+        <a type="submit" class="btn btn-primary" href="/mylogout">Log out</a>
+        <a type="submit" class="btn btn-primary" href="/addnews">Add News</a>
+    </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+
+<body>
+
+
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p>Please login to see this page.</p>
+    {% endif %}
+  {% endif %}
+
+<form method="POST" class="post-form" action="/login">
+        {% csrf_token %}
+    <div class="container">
+        {{ form.errors }}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+<br>
+    <div class="form-group row">
+        <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <h3>Log In</h3>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">User Name</label>
+    <div class="col-sm-4">
+      {{ form.username }}
+
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label" >Password</label>
+    <div class="col-sm-4">
+      {{ form.password }}
+
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <button type="submit" class="btn btn-primary">Log In</button>'
+    </div>
+    </div>
+    </div>
+    <p class="text-center">Don't have an account? <a href="/userregister">Create an account</a>.</p>
+</form>
+
+</body>
+</html>

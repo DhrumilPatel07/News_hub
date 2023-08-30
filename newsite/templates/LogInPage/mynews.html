@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Records</title>
+     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>News Title</th>
+        <th>Category</th>
+        <th>city</th>
+        <th>city</th>
+        <th>publish_type </th>
+        <th>publish_date </th>
+    </tr>
+    </thead>
+    <tbody>
+{% for ddddd in news1 %}
+    <tr>
+        <td>{{ ddddd.newstitle}}</td>
+        <td>{{ ddddd.category }}</td>
+        <td>{{ ddddd.news }}</td>
+        <td>{{ ddddd.city }}</td>
+        <td>{{ ddddd.publish_type }}</td>
+        <td>{{ ddddd.publish_date }}</td>
+        <td>
+            <a href="/update/{{ ddddd.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+            <a href="/delete/{{ ddddd.id }}">Delete</a>
+        </td>
+
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<center><a href="/addnews" class="btn btn-primary">Add News</a></center>
+</body>
+</html>
